@@ -18,6 +18,7 @@ async function createNewData(data){
         .then(respose => respose.json())
         .then(function(data){
             flashMessage('Success', `Berhasil tambah ${data.email}`, 'success')
+            return data;
         })
         .catch(function(err){
             flashMessage('Error', `Gagal ${err}`, 'success')
