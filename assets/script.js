@@ -129,4 +129,9 @@ btn_new.addEventListener('click', function (e) {
 })
 
 
-$('#Data').DataTable()
+$('#Data').DataTable({
+    columnDefs: [{
+        targets: 'no-sort',
+        orderable: false
+    }]
+})
