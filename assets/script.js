@@ -4,6 +4,7 @@ import { format_date } from "./function.js";
 
 const tableData = document.querySelector('#TableData');
 const dateTime = document.getElementById('dateTime');
+const time = document.getElementById('time');
 const form_new_data = document.getElementById('form_new_data');
 const modal_title = document.querySelector('.modal-title');
 const name_detail = document.getElementById("name");
@@ -14,9 +15,19 @@ const btn_new = document.querySelector('#btn_new');
 const btn_save = document.querySelector('#btn_save');
 
 
+function refreshTime() {
+    let date = new Date();
+    let jam = `${date.getHours()} : ${date.getMinutes()} : ${date.getSeconds()} `
+    date.toLocaleString("id-ID", { timeZone: "Asia/Jakarta" });
+    time.innerHTML = jam;
+}
+
+setInterval(refreshTime, 1000);
+
 tableData.innerHTML = loader();
 const date_now = new Date();
 dateTime.innerHTML = format_date(date_now);
+
 
 
 const data = await getdata();
@@ -38,7 +49,7 @@ btn_detail.forEach((btnDetail) => {
         email_detail.value = data.email;
         website_detail.value = data.website;
         btn_save.classList.add('d-none');
-        
+
     })
 })
 
@@ -63,7 +74,7 @@ form_new_data.addEventListener('submit', async function (e) {
     }
 })
 
-btn_new.addEventListener('click', function(e){
+btn_new.addEventListener('click', function (e) {
     e.preventDefault();
     modal_title.innerHTML = "Create New"
     name_detail.value = '';

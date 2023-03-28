@@ -17,4 +17,5 @@ function format_date(date) {
     return dateTemp.toLocaleDateString("id-ID", options);
 }
 
-export { flashMessage , format_date}
+
+export { flashMessage, format_date }
