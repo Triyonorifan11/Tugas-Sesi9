@@ -1,3 +1,4 @@
+// for loading in row table
 const loader = () => `
 <tr>
     <td colspan="6" class="px-2">
@@ -9,6 +10,7 @@ const loader = () => `
 </tr>
 `
 
+// insert data in row
 const dataRow = (element) => `
 <tr>
     <td>${element.id}</td>

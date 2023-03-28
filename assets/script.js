@@ -29,15 +29,14 @@ tableData.innerHTML = loader();
 const date_now = new Date();
 dateTime.innerHTML = format_date(date_now);
 
-
-
+// read data and append to row table
 const data = await getdata();
 tableData.innerHTML = clearTable()
 data.forEach(item => {
     tableData.innerHTML += dataRow(item)
 });
 
-
+// initioal btn action column
 const btn_detail = document.querySelectorAll('#btn_detail');
 const btn_edit = document.querySelectorAll('#btn_edit');
 const btn_delete = document.querySelectorAll('#btn_delete');
@@ -74,7 +73,7 @@ btn_edit.forEach((btnEdit) => {
     })
 })
 
-
+// for delete data
 btn_delete.forEach((btnDelete) => {
     btnDelete.addEventListener('click', async function (e) {
         e.preventDefault();
@@ -87,7 +86,6 @@ btn_delete.forEach((btnDelete) => {
             confirmButtonText: 'Hapus',
             confirmButtonColor: '#dc3545',
         }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
                 deleteData(data);
             }
@@ -95,7 +93,7 @@ btn_delete.forEach((btnDelete) => {
     })
 })
 
-// submit create data
+// submit create, edit data
 form_new_data.addEventListener('submit', async function (e) {
     e.preventDefault();
     const name = document.getElementById("name").value;

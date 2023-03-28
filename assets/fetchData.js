@@ -1,21 +1,24 @@
-import {flashMessage} from "./function.js";
+import { flashMessage } from "./function.js";
 const url = 'http://localhost:3000/data'
 
+// get all data
 async function getdata() {
-   return fetch(url)
+    return fetch(url)
         .then(response => response.json())
         .then(getData => getData)
 }
 
-async function getDataById(id){
+// get data by id
+async function getDataById(id) {
     return fetch(`${url}/${id}`)
         .then(response => response.json())
         .then(data => data);
 }
 
-async function updateData(data){
+// update/edit data
+async function updateData(data) {
     const id = data.id;
-    return fetch(`${url}/${id}`,{
+    return fetch(`${url}/${id}`, {
         method: "PUT",
         headers: {
             'Accept': 'application/json',
@@ -24,17 +27,18 @@ async function updateData(data){
         body: JSON.stringify(data)
     })
         .then(respose => respose.json())
-        .then(function(data){
+        .then(function (data) {
             flashMessage('Success', `Berhasil Edit ${data.email}`, 'success')
-            
+
         })
-        .catch(function(err){
+        .catch(function (err) {
             flashMessage('Error', `Gagal ${err}`, 'success')
         })
 }
 
-async function createNewData(data){
-    return fetch(url,{
+// create new data
+async function createNewData(data) {
+    return fetch(url, {
         method: "POST",
         headers: {
             'Accept': 'application/json',
@@ -43,18 +47,19 @@ async function createNewData(data){
         body: JSON.stringify(data)
     })
         .then(respose => respose.json())
-        .then(function(data){
+        .then(function (data) {
             flashMessage('Success', `Berhasil tambah ${data.email}`, 'success')
-            
+
         })
-        .catch(function(err){
+        .catch(function (err) {
             flashMessage('Error', `Gagal ${err}`, 'success')
         })
 }
 
-async function deleteData(data){
+// delete Data
+async function deleteData(data) {
     const id = data.id;
-    return fetch(`${url}/${id}`,{
+    return fetch(`${url}/${id}`, {
         method: "DELETE",
         headers: {
             'Accept': 'application/json',
@@ -63,13 +68,13 @@ async function deleteData(data){
         body: JSON.stringify(data)
     })
         .then(respose => respose.json())
-        .then(function(){
+        .then(function () {
             flashMessage('Success', `Berhasil Hapus Data`, 'success')
         })
-        .catch(function(err){
+        .catch(function (err) {
             flashMessage('Error', `Gagal ${err}`, 'success')
         })
 }
 
 
-export {getdata, createNewData, getDataById, updateData, deleteData};
+export { getdata, createNewData, getDataById, updateData, deleteData };
