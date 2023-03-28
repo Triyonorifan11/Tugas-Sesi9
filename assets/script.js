@@ -18,7 +18,7 @@ const btn_save = document.querySelector('#btn_save');
 
 function refreshTime() {
     let date = new Date();
-    let jam = `${date.getHours()} : ${date.getMinutes()} : ${date.getSeconds()} `
+    let jam = `${date.getHours()} : ${date.getMinutes()} : ${date.getSeconds()} WIB`
     date.toLocaleString("id-ID", { timeZone: "Asia/Jakarta" });
     time.innerHTML = jam;
 }
