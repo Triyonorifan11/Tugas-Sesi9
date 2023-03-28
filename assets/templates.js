@@ -17,7 +17,7 @@ const dataRow = (element) =>  `
     <td>${element.email}</td>
     <td>${element.website}</td>
     <td>
-        <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-is-user="${element.id}" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-secondary btn-sm" id="btn_detail" data-bs-toggle="modal" data-id-user="${element.id}" data-bs-target="#exampleModal">
             Info
         </button>
     </td>

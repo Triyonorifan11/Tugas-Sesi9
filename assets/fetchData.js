@@ -1,9 +1,16 @@
 import flashMessage from "./function.js";
 const url = 'http://localhost:3000/data'
+
 async function getdata() {
    return fetch(url)
         .then(response => response.json())
         .then(getData => getData)
+}
+
+async function getDataById(id){
+    return fetch(`${url}/${id}`)
+        .then(response => response.json())
+        .then(data => data);
 }
 
 async function createNewData(data){
@@ -26,4 +33,4 @@ async function createNewData(data){
 }
 
 
-export {getdata, createNewData};
+export {getdata, createNewData, getDataById};
