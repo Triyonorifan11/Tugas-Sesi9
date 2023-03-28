@@ -1,4 +1,4 @@
-import flashMessage from "./function.js";
+import {flashMessage} from "./function.js";
 const url = 'http://localhost:3000/data'
 
 async function getdata() {

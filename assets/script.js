@@ -1,7 +1,9 @@
 import { loader, dataRow, clearTable } from "./templates.js";
 import { getdata, createNewData, getDataById } from "./fetchData.js";
+import { format_date } from "./function.js";
 
 const tableData = document.querySelector('#TableData');
+const dateTime = document.getElementById('dateTime');
 const form_new_data = document.getElementById('form_new_data');
 const modal_title = document.querySelector('.modal-title');
 const name_detail = document.getElementById("name");
@@ -12,7 +14,10 @@ const btn_new = document.querySelector('#btn_new');
 const btn_save = document.querySelector('#btn_save');
 
 
-tableData.innerHTML = loader()
+tableData.innerHTML = loader();
+const date_now = new Date();
+dateTime.innerHTML = format_date(date_now);
+
 
 const data = await getdata();
 tableData.innerHTML = clearTable()
