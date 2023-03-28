@@ -13,6 +13,26 @@ async function getDataById(id){
         .then(data => data);
 }
 
+async function updateData(data){
+    const id = data.id;
+    return fetch(`${url}/${id}`,{
+        method: "PUT",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(respose => respose.json())
+        .then(function(data){
+            flashMessage('Success', `Berhasil Edit ${data.email}`, 'success')
+            
+        })
+        .catch(function(err){
+            flashMessage('Error', `Gagal ${err}`, 'success')
+        })
+}
+
 async function createNewData(data){
     return fetch(url,{
         method: "POST",
@@ -25,7 +45,26 @@ async function createNewData(data){
         .then(respose => respose.json())
         .then(function(data){
             flashMessage('Success', `Berhasil tambah ${data.email}`, 'success')
-            return data;
+            
+        })
+        .catch(function(err){
+            flashMessage('Error', `Gagal ${err}`, 'success')
+        })
+}
+
+async function deleteData(data){
+    const id = data.id;
+    return fetch(`${url}/${id}`,{
+        method: "DELETE",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(respose => respose.json())
+        .then(function(){
+            flashMessage('Success', `Berhasil Hapus Data`, 'success')
         })
         .catch(function(err){
             flashMessage('Error', `Gagal ${err}`, 'success')
@@ -33,4 +72,4 @@ async function createNewData(data){
 }
 
 
-export {getdata, createNewData, getDataById};
+export {getdata, createNewData, getDataById, updateData, deleteData};
