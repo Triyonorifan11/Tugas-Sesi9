@@ -29,7 +29,7 @@ async function updateData(data) {
         .then(respose => respose.json())
         .then(function (data) {
             flashMessage('Success', `Berhasil Edit ${data.email}`, 'success')
-
+            
         })
         .catch(function (err) {
             flashMessage('Error', `Gagal ${err}`, 'success')
@@ -52,7 +52,7 @@ async function createNewData(data) {
 
         })
         .catch(function (err) {
-            flashMessage('Error', `Gagal ${err}`, 'success')
+            flashMessage('Error', `Gagal ${err}`, 'error')
         })
 }
 
